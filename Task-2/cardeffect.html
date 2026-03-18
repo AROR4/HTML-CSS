@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Effects</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .hero {
+            background-color: #d7982c;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .card1 {
+            background-color: #d2e713;
+            padding: 15px;
+            margin-top: 20px;
+            box-shadow: 5px 2px 5px rgba(6, 63, 233, 0.531);
+        }
+        .card2 {
+            background-color: #8dd30b;
+            padding: 15px;
+            margin-top: 20px;
+            min-height: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .card2:hover {
+            background-color: #6a12d5;
+            color: #ffffff;
+            justify-content: center;
+            transform: translateX(-6px);
+
+        }
+        .card3 {
+            background-color: #13de28;
+            padding: 15px;
+            margin-top: 20px;
+            border: 2px solid #000000;
+            border-radius: 10px;
+        }   
+
+    </style>
+</head>
+<body>
+    <h1>Card Effects</h1>
+    <section class="hero">
+        <p>This section demonstrates various card effects using CSS. Each card has a unique style to showcase different design techniques.</p>
+        <div class="card1">
+            <h2>Card 1</h2>
+            <p>This card has a simple shadow effect.</p>
+        </div>
+        <div class="card2">
+            <h2>Card 2</h2>
+            <p>This card has a hover effect that changes its background color and do smooth transition.</p>
+        </div>
+        <div class="card3">
+            <h2>Card 3</h2>
+            <p>This card has a border and rounded corners.</p>
+        </div>  
+
+    </section>
+</body>
+</html>
