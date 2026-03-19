@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Menu</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Raleway", serif;
+            color: #2f241d;
+        }
+
+        .hero {
+            padding: 28px 20px;
+            text-align: center;
+            background-color: #b6d9b0;
+            border-bottom: 1px solid #b89f82;
+        }
+
+        .hero h1 {
+            margin: 0 0 8px;
+        }
+
+        .hero p {
+            margin: 0;
+        }
+
+        .navbar {
+            background-color: #2d4f37;
+            padding: 0 20px;
+        }
+
+        .menu,
+        .submenu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        .menu > li {
+            position: relative;
+        }
+
+        .menu a {
+            display: block;
+            padding: 16px 18px;
+            color: #f1fff2;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .menu a:hover {
+            background-color: #3b6a4d;
+        }
+
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 190px;
+            background-color: #f4fff7;
+            border: 1px solid #bcdbb4;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 14px 28px rgba(19, 41, 16, 0.14);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+            overflow: hidden;
+        }
+
+        .submenu a {
+            color: #4b372a;
+            padding: 12px 16px;
+            border-bottom: 1px solid #eee2d4;
+        }
+
+        .submenu li:last-child a {
+            border-bottom: none;
+        }
+
+        .submenu a:hover {
+            background-color: #dcf4d7;
+            color: #202f1d;
+        }
+
+        .menu > li:hover > .submenu,
+        .menu > li:focus-within > .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 10px 16px;
+            }
+
+            .menu {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .menu > li {
+                width: 100%;
+            }
+
+            .menu > li > a {
+                border-radius: 10px;
+                background-color: #325a36;
+            }
+
+            .submenu {
+                position: relative;
+                min-width: 0;
+                margin-top: 6px;
+                border-radius: 10px;
+                box-shadow: none;
+                max-height: 0;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                transition: max-height 0.35s ease;
+            }
+
+            .menu > li:hover > .submenu,
+            .menu > li:focus-within > .submenu {
+                max-height: 260px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1>Navigation Bar with Dropdown</h1>
+        <p>Hover on desktop, with a stacked fallback for smaller screens.</p>
+    </header>
+
+    <nav class="navbar">
+        <ul class="menu">
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="#">Services</a>
+                <ul class="submenu">
+                    <li><a href="#">Web Design</a></li>
+                    <li><a href="#">SEO</a></li>
+                    <li><a href="#">Marketing</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Products</a>
+                <ul class="submenu">
+                    <li><a href="#">Templates</a></li>
+                    <li><a href="#">UI Kits</a></li>
+                    <li><a href="#">Icons</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        <div >
+            <h2>DropDown in Services and Products</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque tenetur voluptatibus neque, deleniti rerum cupiditate sed dolorem iste omnis in at ullam, quia facere incidunt earum eius molestiae eaque aperiam.</p>
+        </div>
+    </main>
+</body>
+</html>

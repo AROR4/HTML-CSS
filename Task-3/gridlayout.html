@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Layout</title>
+    <style>
+        .hero {
+            background-color: #7cecb0;
+            padding: 20px;
+            text-align: center;
+        }
+        .grid {
+            margin-top: 10px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        @media screen and (max-width: 900px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1 >Grid Layout </h1>
+    </div>
+    <div class="grid">
+        <div style="background-color: lightblue; padding: 20px;">Item 1</div>
+        <div style="background-color: lightcoral; padding: 20px;">Item 2</div>
+        <div style="background-color: lightgreen; padding: 20px;">Item 3</div>
+        <div style="background-color: lightyellow; padding: 20px;">Item 4</div>
+        <div style="background-color: lightpink; padding: 20px;">Item 5</div>
+        <div style="background-color: lightgray; padding: 20px;">Item 6</div>
+</body>
+</html>
