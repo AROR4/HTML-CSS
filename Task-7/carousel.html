@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pure CSS Carousel</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            font-family: Arial, sans-serif;
+            background: #eef2f7;
+            color: #1f2937;
+        }
+
+        .carousel-box {
+            width: min(100%, 680px);
+            padding: 18px;
+            background: #ffffff;
+            border-radius: 18px;
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+        }
+
+        h1 {
+            margin: 0 0 18px;
+            text-align: center;
+            font-size: clamp(1.8rem, 4vw, 2.4rem);
+        }
+
+        .slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: 14px;
+            height: 180px;
+        }
+
+        .target-slide {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .slides {
+            display: flex;
+            width: 100%;
+            height: 180px;
+            animation: autoSlide 18s infinite;
+            transition: transform 0.7s ease;
+        }
+
+        .slide {
+            flex: 0 0 100%;
+            height: 180px;
+            background: #dbe4ee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+        }
+
+        .nav {
+            position: absolute;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 14px;
+            pointer-events: none;
+        }
+
+        .nav a {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.88);
+            color: #111827;
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 700;
+            box-shadow: 0 8px 18px rgba(15, 23, 42, 0.18);
+            pointer-events: auto;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        #slide-1:target ~ .slider .slides,
+        #slide-2:target ~ .slider .slides,
+        #slide-3:target ~ .slider .slides {
+            animation: none;
+        }
+
+        #slide-1:target ~ .slider .slides {
+            transform: translateX(0%);
+        }
+
+        #slide-2:target ~ .slider .slides {
+            transform: translateX(-100%);
+        }
+
+        #slide-3:target ~ .slider .slides {
+            transform: translateX(-200%);
+        }
+
+        .nav-default {
+            display: flex;
+        }
+
+        #slide-1:target ~ .slider .nav,
+        #slide-2:target ~ .slider .nav,
+        #slide-3:target ~ .slider .nav {
+            display: none;
+        }
+
+        #slide-1:target ~ .slider .nav-1,
+        #slide-2:target ~ .slider .nav-2,
+        #slide-3:target ~ .slider .nav-3 {
+            display: flex;
+        }
+
+        .controls a {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            text-indent: -9999px;
+            overflow: hidden;
+            transition: transform 0.25s ease, background-color 0.25s ease;
+        }
+
+        .controls a:hover {
+            transform: scale(1.1);
+            background: #94a3b8;
+        }
+
+        .controls .dot-default {
+            background: #0f172a;
+        }
+
+        #slide-1:target ~ .controls .dot-default,
+        #slide-2:target ~ .controls .dot-default,
+        #slide-3:target ~ .controls .dot-default {
+            background: #cbd5e1;
+        }
+
+        #slide-1:target ~ .controls .dot-1,
+        #slide-2:target ~ .controls .dot-2,
+        #slide-3:target ~ .controls .dot-3 {
+            background: #0f172a;
+        }
+
+        @keyframes autoSlide {
+            0%, 28% {
+                transform: translateX(0%);
+            }
+
+            33%, 61% {
+                transform: translateX(-100%);
+            }
+
+            66%, 94% {
+                transform: translateX(-200%);
+            }
+
+            100% {
+                transform: translateX(0%);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .carousel-box {
+                width: min(100%, 520px);
+                padding: 16px;
+            }
+
+            .nav {
+                padding: 0 10px;
+            }
+
+            .nav a {
+                width: 36px;
+                height: 36px;
+                font-size: 1.2rem;
+            }
+
+            .slider,
+            .slide {
+                height: 150px;
+            }
+
+            .slides {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="carousel-box">
+        <h1>Pure CSS Carousel</h1>
+        <span id="slide-1" class="target-slide"></span>
+        <span id="slide-2" class="target-slide"></span>
+        <span id="slide-3" class="target-slide"></span>
+
+        <section class="slider">
+            <div class="slides">
+                <article class="slide slide-1">
+                    <img src="https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg" alt="Mountain landscape with a lake">
+                </article>
+
+                <article class="slide slide-2">
+                    <img src="https://images.pexels.com/photos/459203/pexels-photo-459203.jpeg" alt="Road through a forest">
+                </article>
+
+                <article class="slide slide-3">
+                    <img src="https://images.pexels.com/photos/1227513/pexels-photo-1227513.jpeg" alt="Scenic lake and mountains">
+                </article>
+            </div>
+
+            <div class="nav nav-default">
+                <a href="#slide-3" aria-label="Previous slide">&#8249;</a>
+                <a href="#slide-2" aria-label="Next slide">&#8250;</a>
+            </div>
+
+            <div class="nav nav-1">
+                <a href="#slide-3" aria-label="Previous slide">&#8249;</a>
+                <a href="#slide-2" aria-label="Next slide">&#8250;</a>
+            </div>
+
+            <div class="nav nav-2">
+                <a href="#slide-1" aria-label="Previous slide">&#8249;</a>
+                <a href="#slide-3" aria-label="Next slide">&#8250;</a>
+            </div>
+
+            <div class="nav nav-3">
+                <a href="#slide-2" aria-label="Previous slide">&#8249;</a>
+                <a href="#slide-1" aria-label="Next slide">&#8250;</a>
+            </div>
+        </section>
+
+        <div class="controls">
+            <a href="#slide-1" class="dot-default dot-1" aria-label="Show slide one">1</a>
+            <a href="#slide-2" class="dot-2" aria-label="Show slide two">2</a>
+            <a href="#slide-3" class="dot-3" aria-label="Show slide three">3</a>
+        </div>
+    </main>
+</body>
+</html>

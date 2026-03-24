@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabbed Content Interface</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            background: #e0e8f9;
+            color: #1f2a37;
+        }
+
+        .tabs-shell {
+            width: min(100%, 860px);
+            padding: 30px;
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.84);
+            box-shadow: 0 20px 60px rgba(28, 51, 84, 0.14);
+            backdrop-filter: blur(16px);
+        }
+
+
+        .tab-input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .tab-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .tab-label {
+            padding: 12px 20px;
+            border-radius: 999px;
+            background: #edf2f7;
+            color: #425466;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tab-label:hover {
+            transform: translateY(-2px);
+        }
+
+        .panels {
+            position: relative;
+            min-height: 320px;
+        }
+
+        .panel {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            align-items: center;
+            padding: 28px;
+            border-radius: 24px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(239, 246, 255, 0.9));
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(18px);
+            transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
+        }
+
+        
+        #tab-overview:checked ~ .tab-list label[for="tab-overview"],
+        #tab-features:checked ~ .tab-list label[for="tab-features"],
+        #tab-contact:checked ~ .tab-list label[for="tab-contact"] {
+            color: #fff;
+            background: #f6ad55;
+            box-shadow: 0 14px 28px rgba(221, 107, 32, 0.24);
+        }
+
+        #tab-overview:checked ~ .panels .panel-overview,
+        #tab-features:checked ~ .panels .panel-features,
+        #tab-contact:checked ~ .panels .panel-contact {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 640px) {
+            .tabs-shell {
+                padding: 22px;
+            }
+
+            .panels {
+                min-height: 430px;
+            }
+
+            .panel {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="tabs-shell">
+        <h1>Tabbed Content Interface</h1>
+       
+
+        <input class="tab-input" type="radio" name="tab-group" id="tab-overview" checked>
+        <input class="tab-input" type="radio" name="tab-group" id="tab-features">
+        <input class="tab-input" type="radio" name="tab-group" id="tab-contact">
+
+        <div class="tab-list" role="tablist" aria-label="Content sections">
+            <label class="tab-label" for="tab-overview" role="tab" aria-controls="overview-panel">Overview</label>
+            <label class="tab-label" for="tab-features" role="tab" aria-controls="features-panel">Features</label>
+            <label class="tab-label" for="tab-contact" role="tab" aria-controls="contact-panel">Contact</label>
+        </div>
+
+        <section class="panels">
+            <article class="panel panel-overview" id="overview-panel">
+                <div class="panel-copy">
+                    <h2>OVERVIEW TAB</h2>
+                </div>
+            </article>
+
+            <article class="panel panel-features" id="features-panel">
+                <div class="panel-copy">
+                    <h2>FEATURES TAB</h2>
+                </div>
+            </article>
+
+            <article class="panel panel-contact" id="contact-panel">
+                <div class="panel-copy">
+                    <h2>CONTACT CARD</h2>
+                </div>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
