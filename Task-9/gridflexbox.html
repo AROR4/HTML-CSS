@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid + Flexbox Layout</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+      body {
+        margin: 0;
+        font-family: Arial;
+            background: #f6f2eb;
+
+      }
+
+      .container {
+        display: grid;
+        grid-template-areas:
+          "header header"
+          "sidebar main"
+          "footer footer";
+
+        grid-template-columns: 250px 1fr;
+        grid-template-rows: auto 1fr auto;
+      
+        min-height: 50vh;
+      }
+
+      header {
+        grid-area: header;
+        background-color: #d9c7b0;
+        color: white;
+        padding: auto;
+        position: sticky;
+        top: 0;
+        display: flex;
+        align-items: center;
+        z-index: 100;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 22px;
+        backdrop-filter: blur(14px);
+        box-shadow: 0 12px 30px rgba(24, 33, 38, 0.25);
+      }
+
+      header div h2 {
+        margin: 14px;
+        color: #71451f;
+        letter-spacing: 0.5px;
+      }
+
+      .nav-items {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 20px;
+      }
+
+      .nav-items a {
+        text-decoration: none;
+        color: #71451f;
+        font-weight: bold;
+      }
+
+      aside {
+        margin: 20px 10px 20px 0;
+        grid-area: sidebar;
+        padding: 20px;
+        border-radius: 18px;
+        background: #ffffff;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.248);
+        height: fit-content;
+      }
+
+      main {
+        grid-area: main;
+        padding: 20px;
+        margin: 20px 0 20px 10px;
+        border-radius: 18px;
+        background: #ffffff;
+        box-shadow: 0 10px 25px rgba(245, 197, 120, 0.08);
+      }
+
+      .cards {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      .card {
+        background: #f6f2eb;
+        padding: 20px;
+        position: relative;
+        border-radius: 10px;
+        flex: 1 1 200px;
+      }
+
+      .badge {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background: orange;
+        padding: 5px 10px;
+        border-radius: 10px;
+        z-index: 10;
+      }
+
+      footer {
+        grid-area: footer;
+        background: #333;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        border-radius: 18px;
+        background: #323437;
+        box-shadow: 0 10px 25px rgba(245, 197, 120, 0.08);
+      }
+
+      @media (max-width: 800px) {
+        .container {
+          grid-template-areas:
+            "header"
+            "sidebar"
+            "main"
+            "footer";
+          grid-template-columns: 1fr;
+        }
+        aside {
+            margin: 20px;
+        }
+        main{
+            margin: 20px;
+        }
+      }
+
+      #menu-toggle {
+    display: none;
+}
+
+.menu-icon {
+    display: none;
+
+}
+
+
+@media (max-width: 800px) {
+
+
+    .menu-icon {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+        margin-left: auto;
+        padding: 20px;
+        size: 10px;
+    }
+
+   
+    .nav-items {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+
+        background: rgba(255,255,255,0.95);
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: 0.3s;
+
+        padding: 20px 0;
+        border-radius: 15px;
+    }
+
+    #menu-toggle:checked ~ .nav-items {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+}
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <div><h2>Grid + Flexbox Layout</h2></div>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">☰</label>
+        <div class="nav-items">
+          <a href="#">Home</a>
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+        </div>
+      </header>
+
+      <aside>
+        <h3>User Profile</h3>
+        <p><strong>Name:</strong> Raghav</p>
+        <p><strong>Role:</strong> Developer</p>
+
+        <h4>Status</h4>
+        <p>Currently working on frontend layouts and UI design.</p>
+
+        <h4>Skills</h4>
+        <ul>
+          <li>HTML & CSS</li>
+          <li>JavaScript</li>
+          <li>React</li>
+        </ul>
+      </aside>
+
+      <main>
+        <h2>Main Content</h2>
+
+        <div class="cards">
+          <div class="card">
+            <div class="badge">New</div>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nemo
+            possimus autem assumenda vero placeat! Dolorum itaque repellat quia
+            nulla provident architecto perspiciatis consequuntur. Quas, earum
+            illum omnis asperiores assumenda veritatis, eveniet placeat
+            voluptatum quibusdam blanditiis vitae facilis enim repudiandae.
+            Blanditiis commodi ea nostrum voluptate ipsam quae expedita placeat
+            exercitationem fugit. Quam alias et possimus. Asperiores possimus
+            reiciendis blanditiis? Facere ullam illum modi exercitationem
+            dolores eos voluptas. Veniam culpa voluptatum veritatis nobis
+            voluptas deleniti temporibus. In, nesciunt. Eligendi aperiam
+            aliquid, provident quis pariatur error repellendus harum nam
+            doloribus nihil sed autem, dolores consequuntur, asperiores veniam!
+            Totam quisquam quas, sequi dicta maiores facilis esse illo nulla
+            repellat magni. Recusandae pariatur itaque eveniet facere veritatis
+            perferendis unde, dignissimos sunt ex quidem molestias!
+          </div>
+
+          <div class="card">
+            <div class="badge">Hot</div>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum ex
+            ipsa quaerat illo minus inventore reprehenderit? Veniam dignissimos
+            debitis tempore, excepturi perspiciatis, magnam, quas laboriosam
+            eligendi quisquam itaque aliquid odit eveniet. Quae, fuga? Nihil ex
+            sapiente dignissimos soluta accusantium facilis quasi error animi,
+            recusandae quaerat itaque, consequatur blanditiis quidem magnam.
+          </div>
+        </div>
+        <div class="cards">
+          <div class="card">
+            <div class="badge">New</div>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nemo
+            possimus autem assumenda vero placeat! Dolorum itaque repellat quia
+            nulla provident architecto perspiciatis consequuntur. Quas, earum
+            illum omnis asperiores assumenda veritatis, eveniet placeat
+            voluptatum quibusdam blanditiis vitae facilis enim repudiandae.
+            Blanditiis commodi ea nostrum voluptate ipsam quae expedita placeat
+            exercitationem fugit. Quam alias et possimus. Asperiores possimus
+            reiciendis blanditiis? Facere ullam illum modi exercitationem
+            dolores eos voluptas. Veniam culpa voluptatum veritatis nobis
+            voluptas deleniti temporibus. In, nesciunt. Eligendi aperiam
+            aliquid, provident quis pariatur error repellendus harum nam
+            doloribus nihil sed autem, dolores consequuntur, asperiores veniam!
+            Totam quisquam quas, sequi dicta maiores facilis esse illo nulla
+            repellat magni. Recusandae pariatur itaque eveniet facere veritatis
+            perferendis unde, dignissimos sunt ex quidem molestias!
+          </div>
+
+          <div class="card">
+            <div class="badge">Hot</div>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum ex
+            ipsa quaerat illo minus inventore reprehenderit? Veniam dignissimos
+            debitis tempore, excepturi perspiciatis, magnam, quas laboriosam
+            eligendi quisquam itaque aliquid odit eveniet. Quae, fuga? Nihil ex
+            sapiente dignissimos soluta accusantium facilis quasi error animi,
+            recusandae quaerat itaque, consequatur blanditiis quidem magnam.
+          </div>
+        </div>
+        <div class="card">
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam
+          dolorem asperiores ducimus ab, cupiditate animi vel dignissimos non
+          nam ipsa, itaque ipsum, rerum impedit quasi neque adipisci nobis iste
+          esse perspiciatis. Nostrum reprehenderit maiores odio quia totam ex
+          ipsa qui saepe eligendi assumenda maxime quo, dolore reiciendis fugit
+          in iure doloremque voluptatem, magni voluptate corporis cum minima
+          quisquam veniam quidem? Beatae blanditiis amet ipsa non laboriosam
+          itaque quibusdam reprehenderit, quae tempora officia necessitatibus
+          placeat nesciunt dolorem veritatis commodi ipsum vero vel laborum
+          recusandae debitis a numquam possimus vitae consectetur. Adipisci quod
+          ab aperiam minima. Eligendi nostrum reiciendis aspernatur culpa
+          voluptas!
+        </p>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam
+          dolorem asperiores ducimus ab, cupiditate animi vel dignissimos non
+          nam ipsa, itaque ipsum, rerum impedit quasi neque adipisci nobis iste
+          esse perspiciatis. Nostrum reprehenderit maiores odio quia totam ex
+          ipsa qui saepe eligendi assumenda maxime quo, dolore reiciendis fugit
+          in iure doloremque voluptatem, magni voluptate corporis cum minima
+          quisquam veniam quidem? Beatae blanditiis amet ipsa non laboriosam
+          itaque quibusdam reprehenderit, quae tempora officia necessitatibus
+          placeat nesciunt dolorem veritatis commodi ipsum vero vel laborum
+          recusandae debitis a numquam possimus vitae consectetur. Adipisci quod
+          ab aperiam minima. Eligendi nostrum reiciendis aspernatur culpa
+          voluptas!
+        </p>
+        </div>
+      </main>
+
+      <footer class="site-footer" id="contact">
+        <span
+          >Complex responsive layout demo using CSS Grid, Flexbox, sticky
+          positioning, and layered overlap.</span
+        >
+        <span style="color: #d9c7b0">Designed by Raghav.</span>
+      </footer>
+    </div>
+  </body>
+</html>

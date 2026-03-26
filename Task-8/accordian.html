@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accordion</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: #e0e8f9;
+    font-family: Arial;
+}
+
+.accordion-shell {
+    width: min(100%, 860px);
+    padding: 30px;
+    border-radius: 28px;
+    background: #ffffff;
+   
+
+}
+
+
+.accordion-input {
+    display: none;
+}
+
+
+.accordion-label {
+    display: block;
+    padding: 16px 20px;
+    border-radius: 14px;
+    background: #edf2f7;
+    color: #425466;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 10px;
+   
+}
+
+
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding: 0 20px;
+    border-radius: 18px;
+    background: #f6f2eb;
+    border: 1px solid rgba(148,163,184,0.18);
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+}
+
+
+.accordion-input:checked + .accordion-label {
+    color: #fff;
+    background: #f6ad55;
+    box-shadow: 0 14px 28px rgba(221, 107, 32, 0.24);
+}
+
+.accordion-input:checked + .accordion-label + .accordion-content {
+    max-height: 200px;
+    opacity: 1;
+    padding: 20px;
+    margin-bottom: 15px;
+    transform: translateY(0);
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+<div class="accordion-shell">
+
+    <h1>CSS Accordion </h1>
+
+    <div class="accordion-item">
+        <input type="checkbox" id="acc1" class="accordion-input">
+        <label for="acc1" class="accordion-label">Overview</label>
+        <div class="accordion-content">
+            <p>This is the overview content.</p>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <input type="checkbox" id="acc2" class="accordion-input">
+        <label for="acc2" class="accordion-label">Features</label>
+        <div class="accordion-content">
+            <p>This is the features content.</p>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <input type="checkbox" id="acc3" class="accordion-input">
+        <label for="acc3" class="accordion-label">Contact</label>
+        <div class="accordion-content">
+            <p>This is the contact content.</p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

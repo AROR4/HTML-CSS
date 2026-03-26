@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Multi-Page Simulator</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+
+
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #f6f2eb;
+    color: #2f2f2f;
+}
+
+.navbar {
+    background-color: #d9c7b0;
+    color: white;
+    margin-bottom: 24px;
+
+}
+
+ .navpos {
+        margin-left: 14%;
+        margin-right: 14%;;
+        display: flex;
+        z-index: 100;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px;
+      }
+
+      .navbar div h3 {
+        margin: 15px;
+        color: #71451f;
+        letter-spacing: 0.5px;
+      }
+
+      .nav-items {
+        position: relative;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 20px;
+      }
+
+      .nav-items a {
+        text-decoration: none;
+        color: #71451f;
+        font-weight: bold;
+      }
+
+
+.nav-items a:hover {
+    transform: translateY(-2px);
+}
+
+
+
+body:has(#home:target) .nav-items a[href="#home"],
+body:has(#about:target) .nav-items a[href="#about"],
+body:has(#contact:target) .nav-items a[href="#contact"] {
+    text-decoration: underline;
+
+}
+
+
+.pages {
+    position: relative;
+    padding: 0 28px 0 28px;
+    margin-left: 14%;
+    margin-right: 14%;
+    
+}
+
+.page {
+    padding: 0 28px;
+    position: absolute;
+    inset: 0;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(20px) scale(0.98);
+
+    transition: 
+    opacity 0.4s ease,
+    transform 0.4s ease 0.05s,
+    filter 0.4s ease;
+}
+
+
+
+#home {
+    opacity: 1;
+
+    transform: translateY(0) scale(1);
+    
+}
+
+.page:target {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0) scale(1);
+   
+}
+
+.page:target ~ .page {
+    opacity: 0;
+}
+
+:target ~ .nav-items a {
+    text-decoration: underline;
+    background: #edf2f7;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+.menu-icon {
+    display: none;
+
+}
+.hero {
+    border: 1px solid #d9c7b0;
+    border-radius: 10px;
+    background: #ffffff;
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+.grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+
+@media (max-width: 800px) {
+
+    .menu-icon {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+        margin-left: auto;
+        padding: 20px;
+        size: 10px;
+    }
+
+   
+    .nav-items {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        z-index: 1;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+
+        background: rgba(255,255,255,0.95);
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: 0.3s;
+
+        padding: 20px 0;
+        border-radius: 15px;
+    }
+
+    #menu-toggle:checked ~ .nav-items {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+}
+
+
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navpos">
+    <div><h3>Multi Page Website </h3></div>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-icon">☰</label>
+    <div class="nav-items">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </div>
+    </div>
+</div>
+
+    <div class="pages">
+        <section id="home" class="page">
+
+    <div >
+        <h2>Home Page</h2>
+        <p>
+            Welcome to the Home Page!
+        </p>
+
+   
+    </div>
+
+    <div class="hero">
+        
+            <h2>Features</h2>
+        <p>
+           Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, eveniet nisi adipisci optio iure sed rerum eligendi id repellat ipsam porro. Porro, voluptatibus. Deleniti iure necessitatibus molestias, ut asperiores minima quisquam fuga. Fugiat vitae esse, veniam nesciunt minus est reprehenderit iste sequi unde omnis, doloribus, ex dicta illo a. Temporibus.
+        </p>
+
+        <ul>
+            <li>Pure HTML and CSS</li>
+            <li>Responsive design</li>
+            <li>Simple page transitions</li>
+        </ul>
+
+       
+    </div>
+
+</section>
+
+        <section id="about" class="page">
+            <div >
+                <h2>About Page</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora incidunt minima voluptas eveniet harum cupiditate fugiat in dolores perspiciatis repellat accusamus possimus molestias commodi, sed eum numquam sint unde necessitatibus?</p>
+            </div>
+            <div class="hero">
+                <h2>Interactive Multi-Page Website Simulator</h2>
+        <p>
+            This website uses only HTML and CSS. Navigation changes the visible page with the
+            <code>:target</code> pseudo-class with transitions and animation creating simple
+            page-switching effect. The layout stays responsive across desktop and mobile screens.
+        </p>
+            </div>
+
+            
+                <div class="grid">
+                    <div class="hero">
+                        <h3>Animations</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, veritatis.</p>
+                    </div>
+                    <div class="hero">
+                        <h3>Design</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                    </div>
+                    <div class="hero">
+                        <h3>No Javascript</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, veritatis.</p>
+                    </div>
+                    <div class="hero">
+                        <h3>Responsiveness</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, veritatis.</p>
+                    </div>
+
+            </div>
+        
+        </section>
+
+        <section id="contact" class="page">
+            <div class="page-content">
+                <div class="section">
+                    <h2>Contact Page</h2>
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus ea quod excepturi. Dignissimos ipsa optio veritatis aspernatur repudiandae aperiam vitae ea incidunt perspiciatis odio? Ipsam, itaque. Accusantium pariatur quod libero!
+                    </p>
+                </div>
+
+                <div class="contact-list">
+                    <div class="hero">
+                        <h3>Email</h3>
+                        <p>hello@example.com</p>
+                    </div>
+                    <div class="hero">
+                        <h3>Phone</h3>
+                        <p>+91 98765 43210</p>
+                    </div>
+                    <div class="hero">
+                        <h3>Address</h3>
+                        <p>12 Main Road, Chennai, India</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+
+</body>
+</html>
